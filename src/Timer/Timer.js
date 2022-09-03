@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./Timer.css";
+import audio from "../assets/timer_complete.mp3";
 
 const Timer = () => {
   const toMS = (minutes) => minutes * 60 * 1000;
+  const timerCompleteAudio = new Audio(audio);
 
   const defaultTime = 10;
   const [time, setTime] = useState(toMS(defaultTime));
@@ -12,6 +14,7 @@ const Timer = () => {
   useEffect(() => {
     if (time === 0) {
       stopTimer();
+      timerCompleteAudio.play();
     }
   }, [time]);
 
