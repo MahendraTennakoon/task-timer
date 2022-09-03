@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/task-timer/static/css/main.41316ee8.css",
+    "main.js": "/task-timer/static/js/main.064ed6b4.js",
+    "static/js/787.da8875a6.chunk.js": "/task-timer/static/js/787.da8875a6.chunk.js",
+    "static/media/timer_complete.mp3": "/task-timer/static/media/timer_complete.87fc32c3000e65849277.mp3",
+    "index.html": "/task-timer/index.html",
+    "main.41316ee8.css.map": "/task-timer/static/css/main.41316ee8.css.map",
+    "main.064ed6b4.js.map": "/task-timer/static/js/main.064ed6b4.js.map",
+    "787.da8875a6.chunk.js.map": "/task-timer/static/js/787.da8875a6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.41316ee8.css",
+    "static/js/main.064ed6b4.js"
+  ]
+}
