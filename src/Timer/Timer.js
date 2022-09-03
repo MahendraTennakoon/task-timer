@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import "./Timer.css";
 
 const Timer = () => {
-  const [time, setTime] = useState(0);
-  const [inputTime, setInputTime] = useState(0);
-
   const toMS = (minutes) => minutes * 60 * 1000;
+
+  const defaultTime = 10;
+  const [time, setTime] = useState(toMS(defaultTime));
+  const [inputTime, setInputTime] = useState(defaultTime);
+  const [timer, setTimer] = useState(null);
 
   const padZero = (num, count) => {
     return String(num).padStart(count, "0");
@@ -17,10 +19,24 @@ const Timer = () => {
     const inHours = inMinutes / 60;
 
     const h = Math.floor(inHours);
-    const m = h > 0 ? inMinutes % 60 : inMinutes;
-    const s = m > 0 ? inSeconds % 60 : inSeconds;
+    const m = h > 0 ? inMinutes % 60 : Math.floor(inMinutes);
+    const s = m > 0 ? inSeconds % 60 : Math.floor(inSeconds);
 
     return `${padZero(h, 2)}:${padZero(m, 2)}:${padZero(s, 2)}`;
+  };
+
+  const startTimer = () => {
+    if (timer) return; // do not start another timer if already running
+
+    const timerID = setInterval(() => {
+      setTime((time) => time - 1000);
+    }, 1000);
+    setTimer(timerID);
+  };
+
+  const stopTimer = () => {
+    clearInterval(timer);
+    setTimer(null);
   };
 
   return (
@@ -40,8 +56,8 @@ const Timer = () => {
       >
         Set Time
       </button>
-      <button>Start</button>
-      <button>Stop</button>
+      <button onClick={startTimer}>Start</button>
+      <button onClick={stopTimer}>Stop</button>
     </div>
   );
 };
