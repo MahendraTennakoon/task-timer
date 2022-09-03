@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Timer.css";
 
 const Timer = () => {
@@ -8,6 +8,12 @@ const Timer = () => {
   const [time, setTime] = useState(toMS(defaultTime));
   const [inputTime, setInputTime] = useState(defaultTime);
   const [timer, setTimer] = useState(null);
+
+  useEffect(() => {
+    if (time === 0) {
+      stopTimer();
+    }
+  }, [time]);
 
   const padZero = (num, count) => {
     return String(num).padStart(count, "0");
